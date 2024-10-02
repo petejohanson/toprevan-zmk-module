@@ -1,0 +1,7 @@
+# Copyright (c) 2024 Pete Johanson
+# SPDX-License-Identifier: MIT
+
+config BOARD_CALVIN_TOPREVAN
+	bool "Calvin TopreVan"
+	depends on SOC_STM32F401XC
+	select ADC
