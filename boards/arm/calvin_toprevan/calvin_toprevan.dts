@@ -195,12 +195,12 @@ zephyr_udc0: &usbotg_fs {
 };
 
 &clk_hse {
-	clock-frequency = <DT_FREQ_M(25)>;
+	clock-frequency = <DT_FREQ_M(8)>;
 	status = "okay";
 };
 
 &pll {
-	div-m = <25>;
+	div-m = <8>;
 	mul-n = <336>;
 	div-p = <4>;
 	div-q = <7>;
