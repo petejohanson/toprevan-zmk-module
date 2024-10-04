@@ -3,13 +3,19 @@
 
 # F401CE based Black Pill V3.0+ board board configuration
 
-if BOARD_BLACKPILL_F401CC
+if BOARD_CALVIN_TOPREVAN
 
 config BOARD
-	default "blackpill_f401cc"
+	default "calvin_toprevan"
 
 config SPI_STM32_INTERRUPT
 	default y
 	depends on SPI
 
-endif # BOARD_BLACKPILL_F401CC
+config BUILD_OUTPUT_UF2_USE_FLASH_BASE
+	default y
+
+config BUILD_OUTPUT_UF2_USE_FLASH_OFFSET
+	default y
+
+endif # BOARD_CALVIN_TOPREVAN
