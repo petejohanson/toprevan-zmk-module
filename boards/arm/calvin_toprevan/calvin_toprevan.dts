@@ -376,3 +376,48 @@ zephyr_udc0: &usbotg_fs {
 	apb1-prescaler = <2>;
 	apb2-prescaler = <1>;
 };
+
+/ {
+	magic_mapper {
+		compatible = "zmk,bootmode-to-magic-mapper";
+		status = "okay";
+
+		#address-cells = <1>;
+		#size-cells = <1>;
+
+		boot_retention: retention@0 {
+			compatible = "zephyr,retention";
+			status = "okay";
+			reg = <0x0 0x1>;
+		};
+	};
+
+        sram@2000FFFC {
+                compatible = "zephyr,memory-region", "mmio-sram";
+                reg = <0x2000FFFC 0x4>;
+                zephyr,memory-region = "RetainedMem";
+                status = "okay";
+
+                retainedmem {
+                        compatible = "zephyr,retained-ram";
+                        status = "okay";
+                        #address-cells = <1>;
+                        #size-cells = <1>;
+
+                        magic_retention: retention@0 {
+                                compatible = "zephyr,retention";
+                                status = "okay";
+                                reg = <0x0 0x4>;
+                        };
+                };
+        };
+
+        chosen {
+                zephyr,boot-mode = &boot_retention;
+		zmk,magic-boot-mode = &magic_retention;
+        };
+};
+
+&sram0 {
+        reg = <0x20000000 0xFFFC>;
+};
