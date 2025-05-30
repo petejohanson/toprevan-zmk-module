@@ -8,6 +8,12 @@ if BOARD_CALVIN_TOPREVAN
 config BOARD
 	default "calvin_toprevan"
 
+config ZMK_KEYBOARD_NAME
+        default "TopreVan"
+
+config ZMK_KSCAN_EC_MATRIX_SETTINGS_DISCRETE
+	default y
+
 config SPI_STM32_INTERRUPT
 	default y
 	depends on SPI
