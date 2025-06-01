@@ -3,7 +3,7 @@
 
 # F401CE based Black Pill V3.0+ board board configuration
 
-if BOARD_CALVIN_TOPREVAN
+if BOARD_CALVIN_TOPREVAN || BOARD_CALVIN_TOPREVAN_BIG_BAR
 
 config BOARD
 	default "calvin_toprevan"
