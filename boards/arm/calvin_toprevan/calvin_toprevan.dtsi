@@ -181,6 +181,16 @@
         	    , <&key_physical_attrs 100 100 1075 300 0 0 0>
         	    , <&key_physical_attrs 100 100 1175 300 0 0 0>
 	)
+
+	EC_MATRIX(eight_half_bar_matrix, BIT(3) + BIT(4) + BIT(5) + BIT(7) + BIT(8))
+	EC_TRANSFORM(eight_half_bar_transform, RC(3,0) RC(3,1)                         RC(3,6)                 RC(3,10) RC(3,11))
+	PHYS_LAYOUT(eight_half_bar_physical_layout, "8.5 Bar", eight_half_bar_matrix, eight_half_bar_transform, 
+        	    , <&key_physical_attrs 125 100 000  300 0 0 0>
+        	    , <&key_physical_attrs 100 100 125  300 0 0 0>
+        	    , <&key_physical_attrs 850 100 350  300 0 0 0>
+        	    , <&key_physical_attrs 100 100 1075 300 0 0 0>
+        	    , <&key_physical_attrs 100 100 1175 300 0 0 0>
+	)
 };
 
 &gpioc { status = "disabled"; };
