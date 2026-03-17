@@ -27,8 +27,8 @@ include:
   - board: calvin_toprevan_big_bar
     snippet: enable_ec_calibrator
     artifact-name: calvin_toprevan_big_bar_calibrator
-  - board: calvin_toprevan_eight_half_bar
-    artifact-name: calvin_toprevan_eight_half_bar
-  - board: calvin_toprevan_eight_half_bar
+  - board: calvin_toprevan_eight
+    artifact-name: calvin_toprevan_eight
+  - board: calvin_toprevan_eight
     snippet: enable_ec_calibrator
-    artifact-name: calvin_toprevan_eight_half_bar_calibrator
+    artifact-name: calvin_toprevan_eight_calibrator

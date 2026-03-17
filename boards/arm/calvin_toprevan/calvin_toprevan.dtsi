@@ -182,9 +182,9 @@
         	    , <&key_physical_attrs 100 100 1175 300 0 0 0>
 	)
 
-	EC_MATRIX(eight_half_bar_matrix, BIT(2) + BIT(3) + BIT(4) + BIT(6) + BIT(7) + BIT(8) + BIT(9))
-	EC_TRANSFORM(eight_half_bar_transform, RC(3,0) RC(3,1)                         RC(3,5)                 RC(3,10) RC(3,11))
-	PHYS_LAYOUT(eight_half_bar_physical_layout, "8.5 Bar", eight_half_bar_matrix, eight_half_bar_transform, 
+	EC_MATRIX(eight_matrix, BIT(2) + BIT(3) + BIT(4) + BIT(6) + BIT(7) + BIT(8) + BIT(9))
+	EC_TRANSFORM(eight_transform, RC(3,0) RC(3,1)                         RC(3,5)                 RC(3,10) RC(3,11))
+	PHYS_LAYOUT(eight_physical_layout, "8.5 Bar", eight_matrix, eight_transform,
         	    , <&key_physical_attrs 125 100 000  300 0 0 0>
         	    , <&key_physical_attrs 100 100 125  300 0 0 0>
         	    , <&key_physical_attrs 850 100 225  300 0 0 0>
