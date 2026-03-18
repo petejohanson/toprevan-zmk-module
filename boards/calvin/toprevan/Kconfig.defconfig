@@ -1,0 +1,27 @@
+# Copyright (c) 2022 Linaro Limited
+# SPDX-License-Identifier: Apache-2.0
+
+# F401CE based Black Pill V3.0+ board board configuration
+
+if BOARD_TOPREVAN || BOARD_TOPREVAN_BIG_BAR || BOARD_TOPREVAN_EIGHT
+
+config BOARD
+	default "toprevan"
+
+config ZMK_KEYBOARD_NAME
+    default "TopreVan"
+
+config ZMK_KSCAN_EC_MATRIX_SETTINGS_DISCRETE
+	default y
+
+config SPI_STM32_INTERRUPT
+	default y
+	depends on SPI
+
+config BUILD_OUTPUT_UF2_USE_FLASH_BASE
+	default y
+
+config BUILD_OUTPUT_UF2_USE_FLASH_OFFSET
+	default y
+
+endif # BOARD_TOPREVAN

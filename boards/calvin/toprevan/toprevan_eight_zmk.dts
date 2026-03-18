@@ -1,0 +1,11 @@
+/*
+ * Copyright (c) 2024 Pete Johanson
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include "toprevan.dtsi"
+
+&eight_matrix { status = "okay"; };
+&eight_transform { status = "okay"; };
+&eight_physical_layout { status = "okay"; };

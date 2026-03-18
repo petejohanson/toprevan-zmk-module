@@ -1,0 +1,6 @@
+# Copyright (c) 2024 Pete Johanson
+# SPDX-License-Identifier: MIT
+
+config BOARD_TOPREVAN_EIGHT
+	select SOC_STM32F401XC
+	select ADC
