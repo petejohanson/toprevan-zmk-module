@@ -2,16 +2,13 @@
 # SPDX-License-Identifier: MIT
 
 config BOARD_CALVIN_TOPREVAN
-	bool "Calvin TopreVan"
-	depends on SOC_STM32F401XC
+	select SOC_STM32F401XC
 	select ADC
 
 config BOARD_CALVIN_TOPREVAN_BIG_BAR
-	bool "Calvin TopreVan"
-	depends on SOC_STM32F401XC
+	select SOC_STM32F401XC
 	select ADC
 
 config BOARD_CALVIN_TOPREVAN_EIGHT
-	bool "Calvin TopreVan"
-	depends on SOC_STM32F401XC
+	select SOC_STM32F401XC
 	select ADC
