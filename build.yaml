@@ -18,17 +18,17 @@
 #
 ---
 include:
-  - board: calvin_toprevan
-  - board: calvin_toprevan
+  - board: toprevan
+  - board: toprevan
     snippet: enable_ec_calibrator
-    artifact-name: calvin_toprevan_calibrator
-  - board: calvin_toprevan_big_bar
-    artifact-name: calvin_toprevan_big_bar
-  - board: calvin_toprevan_big_bar
+    artifact-name: toprevan_calibrator
+  - board: toprevan_big_bar
+    artifact-name: toprevan_big_bar
+  - board: toprevan_big_bar
     snippet: enable_ec_calibrator
-    artifact-name: calvin_toprevan_big_bar_calibrator
-  - board: calvin_toprevan_eight
-    artifact-name: calvin_toprevan_eight
-  - board: calvin_toprevan_eight
+    artifact-name: toprevan_big_bar_calibrator
+  - board: toprevan_eight
+    artifact-name: toprevan_eight
+  - board: toprevan_eight
     snippet: enable_ec_calibrator
-    artifact-name: calvin_toprevan_eight_calibrator
+    artifact-name: toprevan_eight_calibrator
