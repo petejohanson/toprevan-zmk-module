@@ -1,9 +1,19 @@
 board:
-  name: toprevan
-  full_name: TopreVan
-  vendor: calvin
-  socs:
-  - name: stm32f401xc
-    variants:
-    - name: big_bar
-    - name: eight
+  - name: calvin_toprevan
+    vendor: calvin
+    socs:
+      - name: stm32f401xc
+        variants:
+          - name: zmk
+  - name: calvin_toprevan_big_bar
+    vendor: calvin
+    socs:
+      - name: stm32f401xc
+        variants:
+          - name: zmk
+  - name: calvin_toprevan_eight
+    vendor: calvin
+    socs:
+      - name: stm32f401xc
+        variants:
+          - name: zmk
