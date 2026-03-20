@@ -1,0 +1,10 @@
+file_format: "1"
+id: toprevan//zmk
+name: toprevan
+type: board
+arch: arm
+outputs:
+    - usb
+features:
+    - keys
+url: https://github.com/calvin-mcd/toprevan/tree/main
