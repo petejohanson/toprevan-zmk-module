@@ -1,12 +1,7 @@
-# Copyright (c) 2022 Linaro Limited
+# Copyright (c) 2025-2026 Pete Johanson
 # SPDX-License-Identifier: Apache-2.0
 
-# F401CE based Black Pill V3.0+ board board configuration
-
-if BOARD_CALVIN_TOPREVAN || BOARD_CALVIN_TOPREVAN_BIG_BAR || BOARD_CALVIN_TOPREVAN_EIGHT_HALF_BAR
-
-config BOARD
-	default "calvin_toprevan"
+if BOARD_CALVIN_TOPREVAN
 
 config ZMK_KEYBOARD_NAME
         default "TopreVan"

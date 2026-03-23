@@ -1,0 +1,8 @@
+board:
+  name: calvin_toprevan
+  vendor: calvin
+  socs:
+    - name: stm32f401xc
+      variants:
+      - name: big_bar
+      - name: eight_half_bar

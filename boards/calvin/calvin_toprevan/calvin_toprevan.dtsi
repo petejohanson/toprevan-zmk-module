@@ -14,42 +14,7 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <physical_layouts.dtsi>
 
-#define EC_MATRIX(_name, _bottom_mask)                           \
-	_name: _name {                                           \
-	    compatible = "zmk,kscan-ec-matrix";                  \
-	    status = "disabled";                                 \
-	    pinctrl-0 = <&ec_pin1 &ec_pin2 &ec_pin3 &ec_pin4>;   \
-	    pinctrl-names = "default";                           \
-	    input-gpios                                          \
-	        = <&left_mux 2 0>                                \
-	        , <&left_mux 1 0>                                \
-	        , <&left_mux 0 0>                                \
-	        , <&left_mux 3 0>                                \
-	        , <&left_mux 4 0>                                \
-	        , <&right_mux 2 0>                               \
-	        , <&right_mux 1 0>                               \
-	        , <&right_mux 0 0>                               \
-	        , <&right_mux 3 0>                               \
-	        , <&right_mux 4 0>                               \
-	        , <&right_mux 5 0>                               \
-	        , <&right_mux 6 0>                               \
-	    ;                                                    \
-	    strobe-gpios                                         \
-	        = <&gpiob 13 GPIO_ACTIVE_HIGH>                   \
-	        , <&gpiob 14 GPIO_ACTIVE_HIGH>                   \
-	        , <&gpiob 12 GPIO_ACTIVE_HIGH>                   \
-	        , <&gpiob 15 GPIO_ACTIVE_HIGH>                   \
-	        ;                                                \
-	    io-channels = <&adc1 3>;                             \
-	    matrix-relax-us = <0>;                               \
-	    adc-read-settle-us = <0>;                            \
-	    strobe-input-masks = <0 0 0 (_bottom_mask)>;         \
-	    drain-gpios = <&gpioa 4 GPIO_OPEN_DRAIN>;            \
-	    trigger-percentage = <60>;                           \
-	    skip-startup-calibration;                            \
-	};
-
-#define EC_TRANSFORM(_name, _bottom_row) \
+#define EC_TRANSFORM(_name, _bottom_row)                                                                          \
 	_name: _name {                                                                                            \
 		compatible = "zmk,matrix-transform";                                                              \
 		status = "disabled";                                                                              \
@@ -63,13 +28,13 @@
 		>;                                                                                                \
 	};
 
-#define PHYS_LAYOUT(_name, _display, _matrix, _transform, ...)                \
+#define PHYS_LAYOUT(_name, _display, _transform, ...)                \
 	_name: _name {                                               \
         	compatible = "zmk,physical-layout";                  \
 		status = "disabled";                                 \
         	display-name = _display;                             \
         	transform = <&_transform>;                           \
-		kscan = <&_matrix>;                                  \
+		kscan = <&matrix>;                                   \
         	keys                                                 \
         	    = <&key_physical_attrs 100 100 000  000 0 0 0>   \
         	    , <&key_physical_attrs 100 100 100  000 0 0 0>   \
@@ -110,7 +75,7 @@
         	    , <&key_physical_attrs 100 100 1075 200 0 0 0>   \
         	    , <&key_physical_attrs 100 100 1175 200 0 0 0>   \
                                                                      \
-		     __VA_ARGS__                                         \
+		     __VA_ARGS__                                     \
         	    ;                                                \
 	};
 
@@ -156,9 +121,40 @@
 	    #gpio-cells = <2>;
 	};
 
-	EC_MATRIX(matrix, BIT(3) + BIT(5) + BIT(7))
+	matrix: matrix {
+	    compatible = "zmk,kscan-ec-matrix";
+	    pinctrl-0 = <&ec_pin1 &ec_pin2 &ec_pin3 &ec_pin4>;
+	    pinctrl-names = "default";
+	    input-gpios
+	        = <&left_mux 2 0>
+	        , <&left_mux 1 0>
+	        , <&left_mux 0 0>
+	        , <&left_mux 3 0>
+	        , <&left_mux 4 0>
+	        , <&right_mux 2 0>
+	        , <&right_mux 1 0>
+	        , <&right_mux 0 0>
+	        , <&right_mux 3 0>
+	        , <&right_mux 4 0>
+	        , <&right_mux 5 0>
+	        , <&right_mux 6 0>
+	    ;
+	    strobe-gpios
+	        = <&gpiob 13 GPIO_ACTIVE_HIGH>
+	        , <&gpiob 14 GPIO_ACTIVE_HIGH>
+	        , <&gpiob 12 GPIO_ACTIVE_HIGH>
+	        , <&gpiob 15 GPIO_ACTIVE_HIGH>
+	        ;
+	    io-channels = <&adc1 3>;
+	    matrix-relax-us = <0>;
+	    adc-read-settle-us = <0>;
+	    drain-gpios = <&gpioa 4 GPIO_OPEN_DRAIN>;
+	    trigger-percentage = <60>;
+	    skip-startup-calibration;
+	};
+
 	EC_TRANSFORM(transform, RC(3,0) RC(3,1) RC(3,2)         RC(3,4)         RC(3,6)         RC(3,8) RC(3,9) RC(3,10) RC(3,11))
-	PHYS_LAYOUT(physical_layout, "Arrows", matrix, transform, 
+	PHYS_LAYOUT(physical_layout, "Arrows", transform,
         	    , <&key_physical_attrs 125 100 000  300 0 0 0>
         	    , <&key_physical_attrs 100 100 125  300 0 0 0>
         	    , <&key_physical_attrs 125 100 225  300 0 0 0>
@@ -170,9 +166,8 @@
         	    , <&key_physical_attrs 100 100 1175 300 0 0 0>
 	)
 
-	EC_MATRIX(big_bar_matrix, BIT(3) + BIT(4) + BIT(6) + BIT(7) + BIT(8))
 	EC_TRANSFORM(big_bar_transform, RC(3,0) RC(3,1) RC(3,2)                         RC(3,5)                 RC(3,9) RC(3,10) RC(3,11))
-	PHYS_LAYOUT(big_bar_physical_layout, "Big Bar", big_bar_matrix, big_bar_transform, 
+	PHYS_LAYOUT(big_bar_physical_layout, "Big Bar", big_bar_transform,
         	    , <&key_physical_attrs 125 100 000  300 0 0 0>
         	    , <&key_physical_attrs 100 100 125  300 0 0 0>
         	    , <&key_physical_attrs 125 100 225  300 0 0 0>
@@ -182,9 +177,8 @@
         	    , <&key_physical_attrs 100 100 1175 300 0 0 0>
 	)
 
-	EC_MATRIX(eight_half_bar_matrix, BIT(2) + BIT(3) + BIT(4) + BIT(6) + BIT(7) + BIT(8) + BIT(9))
 	EC_TRANSFORM(eight_half_bar_transform, RC(3,0) RC(3,1)                         RC(3,5)                 RC(3,10) RC(3,11))
-	PHYS_LAYOUT(eight_half_bar_physical_layout, "8.5 Bar", eight_half_bar_matrix, eight_half_bar_transform, 
+	PHYS_LAYOUT(eight_half_bar_physical_layout, "8.5 Bar", eight_half_bar_transform,
         	    , <&key_physical_attrs 125 100 000  300 0 0 0>
         	    , <&key_physical_attrs 100 100 125  300 0 0 0>
         	    , <&key_physical_attrs 850 100 225  300 0 0 0>
@@ -240,7 +234,7 @@ zephyr_udc0: &usbotg_fs {
 &adc1 {
 	pinctrl-0 = <&adc1_in3_pa3>;
 	pinctrl-names = "default";
-	st,adc-clock-source = <SYNC>;
+	st,adc-clock-source = "SYNC";
 	st,adc-prescaler = <2>;
 	status = "okay";
 

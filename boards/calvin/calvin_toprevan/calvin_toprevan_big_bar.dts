@@ -6,6 +6,9 @@
 
 #include "calvin_toprevan.dtsi"
 
-&big_bar_matrix { status = "okay"; };
+&matrix {
+    strobe-input-masks = <0 0 0 (BIT(3) + BIT(4) + BIT(6) + BIT(7) + BIT(8))>;
+};
+
 &big_bar_transform { status = "okay"; };
 &big_bar_physical_layout { status = "okay"; };
